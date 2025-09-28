@@ -1,6 +1,6 @@
 
 # **`FIRST.KUZLAB.ORG`**  
-### **`HISTORICAL FIRST WORLD WIDE WEB INTERNET SITE`**
+### **`HISTORICAL FIRST WORLD WIDE WEB INTERNET SITE REVISITED`**
 
 ### **`Line Mode Browser Simulator - Local Deployment`**
 
