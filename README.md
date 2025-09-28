@@ -1,19 +1,33 @@
-# **FIRST.KUZLAB.ORG**
+# **FIRST.KUZLAB.ORG**  
+**HISTORICAL FIRST WORLD WIDE WEB INTERNET SITE**
 
 ### **Line Mode Browser Simulator - Local Deployment**
 
-### **This guide explains how to host a fully local clone of the first website and run the Line Mode Browser simulator under your own domain.**
-**Example deployment: https://first.kuzlab.org/** 
+**This project makes it possible to clone and run the world’s first website locally, using the original CERN architecture together with the Line Mode Browser simulator. Anyone can reproduce the historical experience on their own server.**
+
+**The very first website, served from a NeXT computer at CERN in 1991, introduced the core technologies that still power the modern web -->**
+
+HTTP (HyperText Transfer Protocol) — a lightweight request/response protocol designed by Tim Berners-Lee.
+
+HTML (HyperText Markup Language) — the first simple markup language for linking and structuring documents.
+
+The WorldWideWeb application (later renamed Nexus) — the first browser/editor, running exclusively on NeXTSTEP.
+
+The Line Mode Browser (1992) — the first cross-platform browser, accessible from any terminal, which truly democratized access to the web.  
 
 
+**Today, The Kuz Network is building a revisited edition of this historic site - preserving its structure while presenting it under The Kuz Network identity, as both a tribute and a bridge between the early web and today’s open knowledge initiatives.**
+
+**Example deployment: https://first.kuzlab.org/**  
+
+---
 ### **1. Clone the Repository**
 
        cd /var/www/html 
        git clone https://github.com/cern-vet/line-mode-browser.git first 
        cd first 
-       npm install  
 
-
+---
 ### **2. Directory Layout**
 
 **/var/www/html/first/    
@@ -27,7 +41,7 @@
 ├── package.json   
 └── …**  
 
-
+---
 ### **3. public/config.js**
 
 **Configure the simulator to use the local mirror**
@@ -37,7 +51,7 @@
     AUTOLAUNCH: true         // auto-start CLI
     }; 
 
-
+---
 ### **4. public/autolaunch.js** 
 
 **Force the simulator to launch automatically**
@@ -47,7 +61,7 @@
     if (link) link.click();
     }); 
 
-
+---
 ### **5. Run the Simulator (Node.js)**
 
 **Start the Node.js backend on port 8000:**
@@ -55,7 +69,7 @@
     cd /var/www/html/first
     nohup node index.js &
 
-
+---
 ### **6. Apache Virtual Hosts**
 
 **/etc/apache2/sites-available/first-le-ssl.conf**
@@ -117,14 +131,14 @@
         RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent]
         </VirtualHost>
 
-
+---
 ### **7. Enable and Reload Apache**
 
         a2enmod proxy proxy_http headers rewrite
         apachectl -t
         systemctl reload apache2
 
-
+---
 ### **8. Final Checks**
 
         # HTTP → HTTPS redirect
@@ -141,17 +155,9 @@
         curl -I https://first.kuzlab.org/autolaunch.js
 
         # Local mirror (200)
-        curl -I https://first.kuzlab.org/site/hypertext/WWW/TheProject.html
-
-
-**Result**
-
-**Visiting https://first.kuzlab.org/
-directly launches the Line Mode Browser simulator with a fully local copy of the original CERN website.**
-
-
-
-
-
-
-
+        curl -I https://first.kuzlab.org/site/hypertext/WWW/TheProject.html  
+         
+---
+**Visiting https://first.kuzlab.org/ launches the Line Mode Browser simulator with a fully local copy of the original CERN website.**
+<br>
+**Make your own code on it**
