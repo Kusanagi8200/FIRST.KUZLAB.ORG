@@ -1,6 +1,6 @@
 
 # **`FIRST.KUZLAB.ORG`**  
-**`HISTORICAL FIRST WORLD WIDE WEB INTERNET SITE`**
+### **`HISTORICAL FIRST WORLD WIDE WEB INTERNET SITE`**
 
 ### **`Line Mode Browser Simulator - Local Deployment`**
 
@@ -19,7 +19,7 @@ The Line Mode Browser (1992) — the first cross-platform browser, accessible fr
 
 **Today, The Kuz Network is building a revisited edition of this historic site - preserving its structure while presenting it under The Kuz Network identity, as both a tribute and a bridge between the early web and today’s open knowledge initiatives.**
 
-**`Example deployment: https://first.kuzlab.org/`**  
+**`Example deployment:` https://first.kuzlab.org/**  
 
 ---
 ### **`1. CLONE THE REPOSITORY`**
