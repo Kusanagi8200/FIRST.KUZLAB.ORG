@@ -1,7 +1,8 @@
-# **FIRST.KUZLAB.ORG**  
-**HISTORICAL FIRST WORLD WIDE WEB INTERNET SITE**
 
-### **Line Mode Browser Simulator - Local Deployment**
+# **`FIRST.KUZLAB.ORG`**  
+**`HISTORICAL FIRST WORLD WIDE WEB INTERNET SITE`**
+
+### **`Line Mode Browser Simulator - Local Deployment`**
 
 **This project makes it possible to clone and run the world’s first website locally, using the original CERN architecture together with the Line Mode Browser simulator. Anyone can reproduce the historical experience on their own server.**
 
@@ -21,16 +22,16 @@ The Line Mode Browser (1992) — the first cross-platform browser, accessible fr
 **Example deployment: https://first.kuzlab.org/**  
 
 ---
-### **1. Clone the Repository**
+### **`1. CLONE THE REPOSITORY`**
 
        cd /var/www/html 
        git clone https://github.com/cern-vet/line-mode-browser.git first 
        cd first 
 
 ---
-### **2. Directory Layout**
+### **`2. DIRECTORY LAYOUT`**
 
-**/var/www/html/first/    
+**/var/www/html/first/   
 ├── public/   
 │   ├── config.js   
 │   ├── autolaunch.js   
@@ -42,27 +43,27 @@ The Line Mode Browser (1992) — the first cross-platform browser, accessible fr
 └── …**  
 
 ---
-### **3. public/config.js**
+### **`3. PUBLIC/CONFIG.JS`**
 
 **Configure the simulator to use the local mirror**
 
     window.LMB_CONF = {
     BASE_URL: "/site",       // local mirror root
     AUTOLAUNCH: true         // auto-start CLI
-    }; 
-
+    };  
+    
 ---
-### **4. public/autolaunch.js** 
+### **`4. PUBLIC/AUTOLAUNCH.JS`** 
 
 **Force the simulator to launch automatically**
 
     document.addEventListener("DOMContentLoaded", () => {
     const link = document.querySelector(".lmblaunch");
     if (link) link.click();
-    }); 
-
+    });  
+    
 ---
-### **5. Run the Simulator (Node.js)**
+### **`5. RUN THE SIMULATOR (NODE.JS)`**
 
 **Start the Node.js backend on port 8000:**
 
@@ -70,7 +71,24 @@ The Line Mode Browser (1992) — the first cross-platform browser, accessible fr
     nohup node index.js &
 
 ---
-### **6. Apache Virtual Hosts**
+### **`6. APACHE VIRTUAL HOSTS`**
+
+**`CREATE A DNS RECORD`**
+
+**Add an A record pointing $YOURDOMAIN to your VPS public IP.**  
+
+**`INSTALL CERTBOT AND APACHE PLUGIN`**  
+
+    apt update
+    apt install certbot python3-certbot-apache -y  
+
+**`ISSUE A CERTIFICATE FOR YOUR DOMAIN`**  
+
+    certbot --apache -d first.kuzlab.org  
+    apachectl -t
+    systemctl reload apache2  
+
+**`CONFIGURE VHOSTS FILES`**  
 
 **/etc/apache2/sites-available/first-le-ssl.conf**
         
@@ -132,14 +150,14 @@ The Line Mode Browser (1992) — the first cross-platform browser, accessible fr
         </VirtualHost>
 
 ---
-### **7. Enable and Reload Apache**
+### **`7. ENABLE AND RELOAD APACHE`**
 
         a2enmod proxy proxy_http headers rewrite
         apachectl -t
         systemctl reload apache2
 
 ---
-### **8. Final Checks**
+### **`8. FINAL CHECKS`**
 
         # HTTP → HTTPS redirect
         curl -I http://first.kuzlab.org/
@@ -158,6 +176,7 @@ The Line Mode Browser (1992) — the first cross-platform browser, accessible fr
         curl -I https://first.kuzlab.org/site/hypertext/WWW/TheProject.html  
          
 ---
-**Visiting https://first.kuzlab.org/ launches the Line Mode Browser simulator with a fully local copy of the original CERN website.**
+**`Visiting https://first.kuzlab.org/ launches the Line Mode Browser simulator with a fully local copy of the original CERN website.`**
 <br>
-**Make your own code on it**
+**`Make your own code on it. Enjoy`**  
+
